@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <title>Film Explorer</title>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <link
+      rel="stylesheet"
+      href="https://cdn.datatables.net/1.11.3/css/jquery.dataTables.css"
+    />
+    <script src="https://cdn.datatables.net/1.11.3/js/jquery.dataTables.js"></script>
+  </head>
+  <body>
+    <div style="padding: 20px">
+      <h1>Film Explorer</h1>
+      <table id="filmTable" class="display">
+        <thead>
+          <tr>
+            <th>Title</th>
+            <th>Release Year</th>
+          </tr>
+        </thead>
+        <tbody>
+          {% for film in films %}
+          <tr>
+            <td>
+              <a href="{% url 'film_detail' slug=film.slug %}"
+                >{{ film.title }}</a
+              >
+            </td>
+            <td>{{ film.release_year }}</td>
+          </tr>
+          {% endfor %}
+        </tbody>
+      </table>
+    </div>
+
+    <script>
+      $(document).ready(function () {
+        $("#filmTable").DataTable({
+          language: {
+            url: "//cdn.datatables.net/plug-ins/1.11.3/i18n/fr_fr.json",
+          },
+        });
+      });
+    </script>
+  </body>
+</html>

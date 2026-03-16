@@ -1,0 +1,13 @@
+<html>
+  <body>
+    <h1>Film Explorer</h1>
+    <p>Explore films here!</p>
+    <ul>
+      {% for film in films %}
+      <li>
+        <a href="{% url 'film_detail_slug' film.slug %}">{{ film.title }}</a>
+      </li>
+      {% endfor %}
+    </ul>
+  </body>
+</html>
